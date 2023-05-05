@@ -9,7 +9,7 @@
       padding-left: 100px;  
     }  
   </style> 
-<title>Riya Kumar, Mylinh Vu, Ali Khan, Aarman Goel |  CS 184</title>
+<title>Riya Kumar, Mylinh Vu, Ali Khan, Armaan Goel |  CS 184</title>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <link rel="stylesheet" type="text/css" href="style.css" media="screen" />
 </head>
@@ -34,7 +34,7 @@
           capture poses and the future steps would include translating the 2D pose from the capture to the 3D models 
           of Sonic which may have to utilize depth interpolation to make the translation. </p>
       
-      <h3 align="middle">Technical Approach</h3>
+      <h2 align="middle">Technical Approach</h2>
       <h3 align="middle">Main Attempt 1: Spatial Keyframing for Performance-driven Animation with Penguin</h3>
 	    <div align="middle">
   		<table style="width=100%">
@@ -72,36 +72,77 @@
 		 us to abort this attempt at the project since without the interface, we would be unable to provide a 
 		 demo or physical animation. </p>
 	    
-	<h3 align="middle">Main Attempt 2: WebGL Sonic High Kick Dance Animation</h3>
+	<h4 align="middle">Main Attempt 2: WebGL Sonic High Kick Dance Animation</h4>
 	    <p> We implemented the structure of a resource document linked below to build our project.</p>
 	    <p>Model: We used a rigged model of the character Sonic to create keyframes in Blender.
 		    We exported this as a glTF file in order to integrate the Sonic keyframes with our code. </p>
+	    <p>Interpolation: Interpolation was calculated between keyframes as a linear average based on time and position.
+		    This was taken by subtracting the final position by the initial position divided by the amount of time passed 
+		    so that the animation between the two positions is smooth and averaged as time passes. The GLM library was helpful 
+		    for making these calculations. </p>
+	    <p> Files: We need to feed in the keyframes from the Blender in the glTF file that we have as Sonic. We used accessors that
+		    capture the difference between the model poses. These accessors point to a buffer and act as the input to the samplers. 
+		    The buffers are the data set that hold the data for the positions and vertices throughout the animation. 
+		    There is also a bufferview that just takes in snapshots of the buffer data. The samplers take in the interpolation
+		    overtime and output vectors defining the position of the model. These outputs are also captured through accessors.
+		    The output accessors go to channels which map the change of the sampler to the nodes and apply rotations and translations. 
+		    The nodes are the parts of the model that the changes are being applied to. The nodes are stored in an array of nodes which
+		    is stored in the buffer. Then the bufferview provides a snapshot of the model. There are various nodes that make up the animation 
+		    as there are different bones in the model that need to move to be able to make the animation move so the combination of all the nodes
+		    make the character move. </p>
+	    <p>Future: We planned to expand this animation to include inputs from our motion tracker. The motion tracker works by taking video footage 
+		    as an input in real time. Using the MediaPipe library, it detects landmarks such as a user’s body including arms and hands. 
+		    In the interface, you can choose when to snapshot each position and it will save the pose. In theory, we wanted to make the animation 
+		    and interpolate the poses to make an animation. We wanted to feed the landmarks into our animation as inputs so that the Sonic 
+		    character would mimic a user’s motions. However, we did not accomplish this end-to-end. When we spoke to a GSI at the final 
+		    presentation, he told us that translating 2D inputs from a motion tracker like the one we created to a 3D model is a challenge that
+		    people are actively researching. We suggested doing depth interpolation; although it wouldn’t be the most accurate, it would be the 
+		    easiest current solution with our knowledge, but there are definitely more in depth ways to be able to accomplish it with better
+		    accuracy. We plan to find a way to approximate this translation to carry out our vision. </p>
+	    <p>Lessons learned: We learned that building a project from start to finish is more difficult than expected. Though we felt we had a strong grasp 
+		    on course concepts, we were not prepared for how challenging it would be to display results in an interface. We also learned that when you 
+		    are looking through documentation, it is important to research libraries and other resources you plan on using to see if they will work for
+		    your vision before getting started. Overall, we enjoyed creating our project and are satisfied with the knowledge gained. </p>
+
 	    
 
-
+	<h5 align="middle">References</h5>
+	    <p> https://www-ui.is.s.u-tokyo.ac.jp/~takeo/papers/squirrel.pdf 
+	    Lots of Ogre and Skeleton Animation tutorials which failed on our Macs
+	    https://github.com/KhronosGroup/glTF-Tutorials/blob/master/gltfTutorial/gltfTutorial_006_SimpleAnimation.md </p>
 	    
-        <h3 align="middle">Preliminary Results</h3>
-        <p>Though our preliminary results do not include animation, we have produced a static penguin. We have also added limits so that the model does not
-      over rotate or intersect with itself. Once we implement the main function we will be able to see some animation.  </p>
-	    
-	<h3 align="middle">Progress so Far</h3>
-	<p>During the first week, we successfully identified the necessary files and data structures required for keyframe animations, as well as the essential 
-		libraries for implementing the algorithms. However, we still need to determine how to import a Blender 3D model, including its rigging, into our 
-		system. In the second week, we made progress by further developing our core code, incorporating special keyframing implementation. Our next step 
-		is to build test files or create keyframe poses that will enable smooth transitions in the animation. For the third week, we have already 
-		implemented radial basis functions and spatial keyframing. Although we have completed tasks across our targeted weeks, some tasks remain due to 
-		the practical order of implementation. Thus, it was more sensible to complete certain tasks before others.</p>
-
-	<h3 align="middle">Updated Work Plan</h3>
-
-	<p>Week 3: Understand and implement radial basis function and orthonormalization from our base code with the matrices and values. Our code should start outputting 
-		fluid animations or attempts to. Have the userface able to move in the 3D space to see. </p>
-
-	<p>Week 4: Create poses we are satisfied with on our 3D articulated model penguin and mark them as new spatial key frames. Debug our project and work on the webpage 
-		of our final implementation that explains our process and challenges.</p>
-	    
-	    <p> Here is a link to our video summary: https://youtu.be/Hi6UZgm5pqI </p>
-           
+	<h5 align="middle">Contributions by each team member</h5>
+	    <h5 align="Armaan Goel</h5>
+     	    <p> I worked on debugging the initial functions. Once we started trying new implementations,
+		       I tried to render graphics and animations in a variety of engines and languages. 
+		       One of my attempts was successful and once I could render a graphic, I pushed to the group. 
+		       This attempt later became our final project. From there we all built out the code and debugged together. </p>
+	    <h5 align="Ali Khan</h5>
+     	    <p> I worked on debugging the initial functions and trying to get our animation rendered with Ogre. 
+		    I watched and followed along with a two-hour Ogre tutorial before we decided to go in another direction.
+		    I then tried different libraries and methods of rendering but eventually another team member was able to get something 
+		    to render. From there, I coded and debugged with the group until we reached our final presentation.  </p>
+	    <h5 align="Riya Kumar</h5>
+     	    <p> I worked to debug the initial functions that we did not end up using because of our difficulties with Ogre.
+		       This was a group effort and we all shared in frustration when we changed directions.
+		       I then followed several tutorials trying to render our animation but ran into problems because 
+		       I have a Mac and most of the documentation and videos seemed to be geared towards linux. With the final implementation, 
+		       I contributed in writing and debugging the code. I also spent a lot of time reading WebGL documentation to 
+		       understand how to properly implement our project. I also made the slides for our final presentation. Overall,
+		       our team worked well together and helped each other often.  </p>
+	<h5 align="Mylinh Vu</h5>
+     	    <p> I worked on the initial project idea with implementing Spatial Keyframing and understanding how it works with 
+		    the Radial Basis Function that coincides with Orthonormalization to be able to interpolate the values. 
+		    Our group did well to bounce off ideas and debug these original functions and in general throughout the
+		    project so it was definitely a group effort trying to code and debug these functions and methods.
+		    I helped code those algorithms with the values that we knew; however I ran into problems when trying to
+		    find a way to render the images. I spent hours and hours trying to implement Ogre or OpenGL or any form
+		    of library that would help render and display an image or animation on my screen from various tutorials I 
+		    found and my group found that we attempted, yet none of us found such luck. Going into the final version of our project, 
+		    I helped debug and understand how the WebGL worked along with the new code and how the data was processed so I could also
+		    help with our presentations. I found the models that we were trying to use throughout the project and worked with my 
+		    group to choose keyframes when we were able to get a working rendering.  </p>
+		   
      
     </div>
 </body>
