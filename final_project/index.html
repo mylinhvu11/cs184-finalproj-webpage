@@ -1,1 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<style>  
+    div.padded {  
+      padding-top: 0px;  
+      padding-right: 100px;  
+      padding-bottom: 0.25in;  
+      padding-left: 100px;  
+    }  
+  </style> 
+<title>Riya Kumar, Mylinh Vu, Ali Khan, Aarman Goel |  CS 184</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="style.css" media="screen" />
+</head>
+<body>
+<br />
+<h1 align="middle">Final Project: Sonic High Kick Dance</h1>
+    <h2 align="middle">Riya Kumar, Mylinh Vu, Ali Khan, and Armaan Goel</h2>
+    <h2 align="middle">https://mylinhvu11.github.io/cs184-finalproj-webpage/</h2>
 
+    <div class="padded">
+
+        <h3 align="middle">Abstract</h3>
+        <p>Our project utilizes libraries and packages from WebGL to create an interface. 
+          With the model, we used a glTF rigged model of Sonic from online to make the keyframes
+          in Blender to create our animation. To implement it, we used interpolation through linear
+          averaging between positions in relation to time to get the values in between the keyframes. 
+          There are options with the accessors to attempt cubic interpolation; however, with our keyframes,
+          linear interpolation was the simplest approach and still provided a smooth animation. We decided to 
+          make our Sonic character do a high kick dance which was fun to see it get rendered through the React app.
+          As an extension, we wanted to implement camera capture with a video frame that can sense a person and take 
+          captures of the person’s poses and then integrate it and have Sonic do the same movements. We were able to 
+          capture poses and the future steps would include translating the 2D pose from the capture to the 3D models 
+          of Sonic which may have to utilize depth interpolation to make the translation. </p>
+      
+      <h3 align="middle">Technical Approach</h3>
+      <h3 align="middle">Main Attempt 1: Spatial Keyframing for Performance-driven Animation with Penguin</h3>
+        <p>This equation interpolates positions where f(X) represents the interpolation function with all the values
+          in between. dj represents the weights of how much the specific value of interpolation should affect the final
+          project. cj is the specific position of the keyframe and P(X) is a one-degree polynomial function that gets
+          added to the general position so that the general position of the model is correct in relation. </p>
+
+
+	    
+        <h3 align="middle">Preliminary Results</h3>
+        <p>Though our preliminary results do not include animation, we have produced a static penguin. We have also added limits so that the model does not
+      over rotate or intersect with itself. Once we implement the main function we will be able to see some animation.  </p>
+	    
+	<h3 align="middle">Progress so Far</h3>
+	<p>During the first week, we successfully identified the necessary files and data structures required for keyframe animations, as well as the essential 
+		libraries for implementing the algorithms. However, we still need to determine how to import a Blender 3D model, including its rigging, into our 
+		system. In the second week, we made progress by further developing our core code, incorporating special keyframing implementation. Our next step 
+		is to build test files or create keyframe poses that will enable smooth transitions in the animation. For the third week, we have already 
+		implemented radial basis functions and spatial keyframing. Although we have completed tasks across our targeted weeks, some tasks remain due to 
+		the practical order of implementation. Thus, it was more sensible to complete certain tasks before others.</p>
+
+	<h3 align="middle">Updated Work Plan</h3>
+
+	<p>Week 3: Understand and implement radial basis function and orthonormalization from our base code with the matrices and values. Our code should start outputting 
+		fluid animations or attempts to. Have the userface able to move in the 3D space to see. </p>
+
+	<p>Week 4: Create poses we are satisfied with on our 3D articulated model penguin and mark them as new spatial key frames. Debug our project and work on the webpage 
+		of our final implementation that explains our process and challenges.</p>
+	    
+	    <p> Here is a link to our video summary: https://youtu.be/Hi6UZgm5pqI </p>
+           
+     
+    </div>
+</body>
+</html>
