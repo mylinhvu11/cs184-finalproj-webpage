@@ -36,10 +36,47 @@
       
       <h3 align="middle">Technical Approach</h3>
       <h3 align="middle">Main Attempt 1: Spatial Keyframing for Performance-driven Animation with Penguin</h3>
+	    <div align="middle">
+  		<table style="width=100%">
+    		<tr>
+      		<td>
+        		<img src="radial_basis.png" align="middle" width="400px"/>
+        	<figcaption align="middle">basic test 4 with default parameters</figcaption>
+      		</td>
+    		</tr>
+  		</table>
+	</div>
         <p>This equation interpolates positions where f(X) represents the interpolation function with all the values
           in between. dj represents the weights of how much the specific value of interpolation should affect the final
           project. cj is the specific position of the keyframe and P(X) is a one-degree polynomial function that gets
           added to the general position so that the general position of the model is correct in relation. </p>
+	 
+	<p> The importance of orthonormalization is to make sure that the vectors are scaled, corrected and pointed in 
+	 the correct direction as the movement and not the opposite direction which can happen through the math done 
+	 in the radial basis function. Although we seemed to be able to implement both of these algorithms with the 
+	  given equation and the cross products for orthonormalization, we were unable to fully test it without
+		testing our renderings. </p>
+	    
+	  <p>Spatial Keyframing by taking the interpolation from the Radial Basis Function and orthonormalization to 
+		  be a realistic transformation to present the values. It tok in values from the input as the keyframes 
+		  and keysets and used our given functions to interpolate them and save the values to be given as an
+		  output that could be displayed on the screen.  </p>
+	    
+	 <p> Problems: We tried for days to implement an interface either using Ogre which is an open source 3D graphics
+		 engine or OpenGL, both with libraries that should be able to provide us the resources to build an 
+		 interface, but the code and tutorials that we found were mostly Linux based and we were unable to 
+		 translate the code to be compatible with Mac. We learned that the larger scaled renderings were harder 
+		 to be able to run with Mac due to the large scale data needed for animations in comparison to image 
+		 renderings from earlier in the class. In addition, although we understood the algorithms needed to 
+		 implement the spatial keyframing, the interface was found to be the most difficult part which caused
+		 us to abort this attempt at the project since without the interface, we would be unable to provide a 
+		 demo or physical animation. </p>
+	    
+	<h3 align="middle">Main Attempt 2: WebGL Sonic High Kick Dance Animation</h3>
+	    <p> We implemented the structure of a resource document linked below to build our project.</p>
+	    <p>Model: We used a rigged model of the character Sonic to create keyframes in Blender.
+		    We exported this as a glTF file in order to integrate the Sonic keyframes with our code. </p>
+	    
 
 
 	    
